@@ -1,0 +1,540 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" ">
+<title>Getting Started with Docker | Docker</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/boxshadowproperties.css">
+<!-- most color styles are extracted out to here -->
+<link rel="stylesheet" href="css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Anchor.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="OS22" href="https://dipaish.github.io/feed.xml">
+
+
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Docker</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                
+                <!-- entries without drop-downs appear here -->
+
+
+
+
+                
+                
+                
+                <li><a href="index">Docker Basics</a></li>
+                
+                
+                
+                <li><a href="dockerimages">Docker Images</a></li>
+                
+                
+                
+                <li><a href="dockervolumes">Docker Volumes</a></li>
+                
+                
+                
+                <li><a href="dockercompose">Docker Compose</a></li>
+                
+                
+                
+                <li><a href="dockernetwork">Docker Network</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:deepak.curator@gmail.com?subject=Docker feedback&body=I have some feedback about the Getting Started with Docker page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Getting Started with Docker">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+
+
+<!-- Page Content -->
+<div class="container">
+  <div id="main">
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" >
+            <!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+    $( document ).ready(function() {
+      // Handler for .ready() called.
+    
+    $('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+    
+    /* this offset helps account for the space taken up by the floating toolbar. */
+    $('#toc').on('click', 'a', function() {
+      var target = $(this.getAttribute('href'))
+        , scroll_target = target.offset().top
+    
+      $(window).scrollTop(scroll_target - 10);
+      return false
+    })
+    
+    });
+    </script>
+    
+    <div id="toc"></div>
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9">
+            
+
+<div class="post-content">
+
+   
+
+    
+    
+
+
+
+
+    
+
+
+    
+
+   <h1 id="getting-started-with-docker">Getting Started with Docker</h1>
+<p>This tutorial aims to guide you through the process of setting up Docker Desktop and understanding the fundamentals of Docker. By the end of this tutorial, you will be able to run, stop, and remove Docker containers. Let’s get started!</p>
+
+<h2 id="setting-up-your-computer">Setting up your Computer</h2>
+
+<p>The <em>getting started</em> guide on Docker has detailed instructions for setting up Docker on <a href="https://docs.docker.com/docker-for-mac/">Mac</a>, <a href="https://docs.docker.com/engine/installation/linux/">Linux</a> and <a href="https://docs.docker.com/desktop/install/windows-install/">Windows</a>.</p>
+
+<p><em>If you’re using Docker for Windows</em> make sure you have <a href="https://docs.docker.com/docker-for-windows/#shared-drives">shared your drive</a>.</p>
+
+<p><em>Important note</em> If you’re using an older version of Windows or MacOS you may need to use <a href="https://docs.docker.com/machine/overview/">Docker Machine</a> instead.</p>
+
+<p><em>All commands work in either bash or Powershell on Windows</em></p>
+
+<h2 id="check-your-docker-installation">Check your Docker Installation</h2>
+<p>Once you are done installing Docker, test your Docker installation by running the following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+03f4658f8b78: Pull complete
+a3ed95caeb02: Pull complete
+Digest: sha256:8be990ef2aeb16dbcb9271ddfe2610fa6658d13f6dfb8bc72074cc1ca36966a7
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker.
+This message shows that your installation appears to be working correctly.
+...
+</code></pre></div></div>
+<h2 id="the-docker-dashboard">The Docker Dashboard</h2>
+<p>It provides a quick view of the containers running on your machine. You have quick access to container logs, and you can get a shell inside the container. You can easily manage containers, such as stopping, starting, or removing them. 
+<img src="assets/docker.png" alt="Docker Dashboard" title="Docker Dashboard" />.</p>
+
+<h2 id="running-your-first-container">Running your first Container</h2>
+
+<p>In this section, you will run an <a href="http://www.alpinelinux.org/">Alpine Linux</a> container (a lightweight Linux distribution) on your system and get familiar with the <code class="language-plaintext highlighter-rouge">docker run</code> command.</p>
+
+<p>To get started, let’s run the following in our terminal:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker pull alpine
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Note:</strong> Depending on how you’ve installed docker on your system, you might see a <code class="language-plaintext highlighter-rouge">permission denied</code> error after running the above command. Try the commands from the Getting Started tutorial to <a href="https://docs.docker.com/engine/getstarted/step_one/#/step-3-verify-your-installation">verify your installation</a>. If you’re on Linux, you may need to prefix your <code class="language-plaintext highlighter-rouge">docker</code> commands with <code class="language-plaintext highlighter-rouge">sudo</code>. Alternatively you can <a href="https://docs.docker.com/engine/installation/linux/ubuntulinux/#/create-a-docker-group">create a docker group</a> to get rid of this issue.</p>
+</blockquote>
+
+<p>The <code class="language-plaintext highlighter-rouge">pull</code> command fetches the alpine <strong>image</strong> from the <strong>Docker registry</strong> and saves it in your system. You can use the <code class="language-plaintext highlighter-rouge">docker images</code> command to see a list of all images on your system.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker images
+REPOSITORY              TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+alpine                 latest              c51f86c28340        4 weeks ago         1.109 MB
+hello-world             latest              690ed74de00f       5 months ago        960 B
+</code></pre></div></div>
+
+<h3 id="docker-run">Docker Run</h3>
+<p>Great! Let’s now run a Docker <strong>container</strong> based on this image. To do that you are going to use the <code class="language-plaintext highlighter-rouge">docker run</code> command.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker run alpine ls -l
+total 48
+drwxr-xr-x    2 root     root          4096 Mar  2 16:20 bin
+drwxr-xr-x    5 root     root           360 Mar 18 09:47 dev
+drwxr-xr-x   13 root     root          4096 Mar 18 09:47 etc
+drwxr-xr-x    2 root     root          4096 Mar  2 16:20 home
+drwxr-xr-x    5 root     root          4096 Mar  2 16:20 lib
+......
+......
+</code></pre></div></div>
+<p>What happened? Behind the scenes, a lot of stuff happened. When you call <code class="language-plaintext highlighter-rouge">run</code>,</p>
+<ol>
+  <li>The Docker client contacts the Docker daemon.</li>
+  <li>The Docker daemon checks local store if the image (alpine in this case) is available locally, and if not, downloads it from Docker Store. (Since we have issued <code class="language-plaintext highlighter-rouge">docker pull alpine</code> before, the download step is not necessary)</li>
+  <li>The Docker daemon creates the container and then runs a command in that container.</li>
+  <li>The Docker daemon streams the output of the command to the Docker client</li>
+</ol>
+
+<p>When you run <code class="language-plaintext highlighter-rouge">docker run alpine</code>, you provided a command (<code class="language-plaintext highlighter-rouge">ls -l</code>), so Docker started the command specified and you saw the listing.</p>
+
+<p>Let’s try something more exciting.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker run alpine echo "hello from alpine"
+hello from alpine
+</code></pre></div></div>
+<p>OK, that’s some actual output. In this case, the Docker client dutifully ran the <code class="language-plaintext highlighter-rouge">echo</code> command in our alpine container and then exited it. If you’ve noticed, all of that happened pretty quickly. Imagine booting up a virtual machine, running a command and then killing it. Now you know why they say containers are fast!</p>
+
+<p>Try another command.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker run alpine /bin/sh
+</code></pre></div></div>
+
+<p>Wait, nothing happened! Is that a bug? Well, no. These interactive shells will exit after running any scripted commands, unless they are run in an interactive terminal - so for this example to not exit, you need to <code class="language-plaintext highlighter-rouge">docker run -it alpine /bin/sh</code>.</p>
+
+<p>You are now inside the container shell and you can try out a few commands like <code class="language-plaintext highlighter-rouge">ls -l</code>, <code class="language-plaintext highlighter-rouge">uname -a</code> and others. Exit out of the container by giving the <code class="language-plaintext highlighter-rouge">exit</code> command.</p>
+
+<p>Ok, now it’s time to see the <code class="language-plaintext highlighter-rouge">docker ps</code> command. The <code class="language-plaintext highlighter-rouge">docker ps</code> command shows you all containers that are currently running.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+</code></pre></div></div>
+
+<p>Since no containers are running, you see a blank line. Let’s try a more useful variant: <code class="language-plaintext highlighter-rouge">docker ps -a</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+36171a5da744        alpine              "/bin/sh"                5 minutes ago       Exited (0) 2 minutes ago                        fervent_newton
+a6a9d46d0b2f        alpine             "echo 'hello from alp"    6 minutes ago       Exited (0) 6 minutes ago                        lonely_kilby
+ff0a5c3750b9        alpine             "ls -l"                   8 minutes ago       Exited (0) 8 minutes ago                        elated_ramanujan
+c317d0a9e3d2        hello-world         "/hello"                 34 seconds ago      Exited (0) 12 minutes ago                       stupefied_mcclintock
+</code></pre></div></div>
+
+<p>What you see above is a list of all containers that you ran. Notice that the <code class="language-plaintext highlighter-rouge">STATUS</code> column shows that these containers exited a few minutes ago. You’re probably wondering if there is a way to run more than just one command in a container. Let’s try that now:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker run -it alpine /bin/sh
+/ # ls
+bin      dev      etc      home     lib      linuxrc  media    mnt      proc     root     run      sbin     sys      tmp      usr      var
+/ # uname -a
+Linux 97916e8cb5dc 4.4.27-moby #1 SMP Wed Oct 26 14:01:48 UTC 2016 x86_64 Linux
+</code></pre></div></div>
+<p>Running the <code class="language-plaintext highlighter-rouge">run</code> command with the <code class="language-plaintext highlighter-rouge">-it</code> flags attaches us to an interactive tty in the container. Now you can run as many commands in the container as you want. Take some time to run your favorite commands.</p>
+
+<p>To find out more about <code class="language-plaintext highlighter-rouge">run</code>, use <code class="language-plaintext highlighter-rouge">docker run --help</code> to see a list of all flags it supports. As you proceed further, we’ll see a few more variants of <code class="language-plaintext highlighter-rouge">docker run</code>.</p>
+
+<h2 id="terminologies">Terminologies</h2>
+<p>In the last section, you saw a lot of Docker-specific jargon which might be confusing to some. So before you go further, let’s clarify some terminology that is used frequently in the Docker ecosystem.</p>
+
+<ul>
+  <li><em>Images</em> - The file system and configuration of our application which are used to create containers. To find out more about a Docker image, run <code class="language-plaintext highlighter-rouge">docker inspect alpine</code>. In the demo above, you used the <code class="language-plaintext highlighter-rouge">docker pull</code> command to download the <strong>alpine</strong> image. When you executed the command <code class="language-plaintext highlighter-rouge">docker run hello-world</code>, it also did a <code class="language-plaintext highlighter-rouge">docker pull</code> behind the scenes to download the <strong>hello-world</strong> image.</li>
+  <li><em>Containers</em> - Running instances of Docker images — containers run the actual applications. A container includes an application and all of its dependencies. It shares the kernel with other containers, and runs as an isolated process in user space on the host OS. You created a container using <code class="language-plaintext highlighter-rouge">docker run</code> which you did using the alpine image that you downloaded. A list of running containers can be seen using the <code class="language-plaintext highlighter-rouge">docker ps</code> command.</li>
+  <li><em>Docker daemon</em> - The background service running on the host that manages building, running and distributing Docker containers.</li>
+  <li><em>Docker client</em> - The command line tool that allows the user to interact with the Docker daemon.</li>
+  <li><em>Docker Store</em> - A <a href="https://store.docker.com/">registry</a> of Docker images, where you can find trusted and enterprise ready containers, plugins, and Docker editions. You’ll be using this later in this tutorial.</li>
+</ul>
+
+<h2 id="exercise">Exercise</h2>
+<ol>
+  <li>
+    <p><strong>Task 1: Find and Run a MySQL Image</strong></p>
+
+    <p>Your task is to search for an appropriate MySQL image from Docker Hub and run the MySQL database service in a container.</p>
+  </li>
+  <li>
+    <p><strong>Task 2: Run MySQL Image in Detached Mode</strong></p>
+
+    <p>After finding the suitable MySQL image, run it in detached mode using the <code class="language-plaintext highlighter-rouge">docker run</code> command with the <code class="language-plaintext highlighter-rouge">-d</code> flag. This mode allows the container to run in the background, freeing up your terminal for other tasks.</p>
+
+    <p>Note: The <code class="language-plaintext highlighter-rouge">-d</code> flag enables detached mode, detaching the running container from the terminal/shell and returning your prompt after the container starts.</p>
+  </li>
+  <li>
+    <p><strong>Task 3: View Running Containers</strong></p>
+
+    <p>Use the <code class="language-plaintext highlighter-rouge">docker ps</code> command to view the list of running containers and verify that your MySQL container is up and running.</p>
+  </li>
+  <li>
+    <p><strong>Task 4: Stop and Remove the Container</strong></p>
+
+    <p>To stop the container you just launched, you’ll need the container ID. Once you have it, use the <code class="language-plaintext highlighter-rouge">docker stop</code> command. Then, if you no longer need the container, remove it using the <code class="language-plaintext highlighter-rouge">docker rm</code> command.</p>
+  </li>
+</ol>
+
+<blockquote>
+  <p><strong>Note:</strong> It is not required to specify the entire <code class="language-plaintext highlighter-rouge">CONTAINER ID</code>. You can just specify a few starting characters and if it is unique among all the containers that you have launched, the Docker client will intelligently pick it up.</p>
+</blockquote>
+
+<p><strong><em>Example Launching a container in detached mode</em></strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker run --name cname -e MYSQL_ROOT_PASSWORD=yourpassword -d mysql:tag
+
+</code></pre></div></div>
+<p>In the above command:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">--name cname</code> : This sets the name of the container to “cname”. You can use this name to easily refer to and manage the container later.</li>
+  <li><code class="language-plaintext highlighter-rouge">-e MYSQL_ROOT_PASSWORD=yourpassword</code> : This option sets an environment variable for the MySQL container. It sets the MYSQL_ROOT_PASSWORD variable to “yourpassword,” which will be used as the root password for the MySQL database.</li>
+  <li><code class="language-plaintext highlighter-rouge">-d</code> will run the container in detached mode, meaning it will run in the background.</li>
+  <li><code class="language-plaintext highlighter-rouge">mysql:tag</code>: This part specifies the Docker image to use for the container. In this example, it uses the official MySQL image with a specific tag. The tag represents a specific version or variant of the MySQL image (e.g., latest, 8.0, 5.7, etc.).</li>
+</ul>
+
+<p><strong><em>Remove all containers since you don’t need them any more. Remember to stop before deleting a container</em></strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- docker stop continaername/id
+- docker remove continaername/id
+</code></pre></div></div>
+
+<h2 id="docker-commands-cheat-sheet">Docker Commands Cheat Sheet</h2>
+
+<p>Here is a list of commonly used Docker commands for managing containers:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">docker start</code>: Start a stopped container.
+    <ul>
+      <li>Example: <code class="language-plaintext highlighter-rouge">docker start mycontainer</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">docker stop</code>: Stop a running container.
+    <ul>
+      <li>Example: <code class="language-plaintext highlighter-rouge">docker stop mycontainer</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">docker restart</code>: Stop and then start a container.
+    <ul>
+      <li>Example: <code class="language-plaintext highlighter-rouge">docker restart mycontainer</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">docker rm</code>: Remove a container.
+    <ul>
+      <li>Example: <code class="language-plaintext highlighter-rouge">docker rm mycontainer</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">docker ps</code>: List running containers.
+    <ul>
+      <li>Example: <code class="language-plaintext highlighter-rouge">docker ps</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">docker ps -a</code>: List all containers (including stopped containers).
+    <ul>
+      <li>Example: <code class="language-plaintext highlighter-rouge">docker ps -a</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">docker logs</code>: Display the logs of a container.
+    <ul>
+      <li>Example: <code class="language-plaintext highlighter-rouge">docker logs mycontainer</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">docker exec</code>: Execute a command inside a running container.
+    <ul>
+      <li>Example: <code class="language-plaintext highlighter-rouge">docker exec -it mycontainer sh</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">docker inspect</code>: Display detailed information about a container.
+    <ul>
+      <li>Example: <code class="language-plaintext highlighter-rouge">docker inspect mycontainer</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">docker stats</code>: Display real-time resource usage statistics of running containers.
+    <ul>
+      <li>Example: <code class="language-plaintext highlighter-rouge">docker stats</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">docker pause</code>: Pause the execution of processes in a running container.
+    <ul>
+      <li>Example: <code class="language-plaintext highlighter-rouge">docker pause mycontainer</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">docker unpause</code>: Resume the execution of processes in a paused container.
+    <ul>
+      <li>Example: <code class="language-plaintext highlighter-rouge">docker unpause mycontainer</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">docker top</code>: Display the running processes inside a container.
+    <ul>
+      <li>Example: <code class="language-plaintext highlighter-rouge">docker top mycontainer</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">docker rename</code>: Rename a container.
+    <ul>
+      <li>Example: <code class="language-plaintext highlighter-rouge">docker rename mycontainer newname</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">docker attach</code>: Attach to a running container to view its output or interact with its processes.
+    <ul>
+      <li>Example: <code class="language-plaintext highlighter-rouge">docker attach mycontainer</code></li>
+    </ul>
+  </li>
+</ul>
+
+
+    <div class="tags">
+        
+    </div>
+
+
+
+
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2023 Duy THA. All rights reserved. <br />
+ Site last generated: Nov 23, 2023 <br />
+                </div>
+            </div>
+</footer>
+
+
+
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+</div>
+<!-- /#main -->
+    </div>
+
+</body>
+
+</html>
+
+
